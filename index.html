@@ -163,7 +163,19 @@
   }
 
   /* ---------- PLOT BAND (about) ---------- */
-  .figure.band{aspect-ratio:auto;height:240px;margin-top:50px;}
+  .figure.band{aspect-ratio:auto;height:360px;margin-top:14px;}
+  .k-control{display:flex;align-items:center;justify-content:flex-end;gap:16px;margin-top:48px;flex-wrap:wrap;}
+  .k-label{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);}
+  .k-btns{display:inline-flex;gap:6px;}
+  .k-btns button{
+    font-family:var(--mono);font-size:.84rem;color:var(--muted);
+    background:var(--surface);border:1px solid var(--line);
+    width:36px;height:36px;border-radius:8px;cursor:pointer;
+    transition:background .18s,border-color .18s,color .18s,transform .12s;
+  }
+  .k-btns button:hover{border-color:var(--teal);color:var(--text);transform:translateY(-1px);}
+  .k-btns button.active{background:var(--teal);border-color:var(--teal);color:var(--ink);font-weight:600;}
+  .k-btns button:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
 
   /* ---------- SECTION SHELL ---------- */
   section{padding:84px 0;position:relative;z-index:1;}
@@ -196,7 +208,7 @@
     transition:transform .25s,border-color .25s,box-shadow .25s;
   }
   .card:hover{transform:translateY(-5px);border-color:var(--line-strong);box-shadow:0 28px 50px -28px rgba(0,0,0,.75);}
-  .card-viz{height:132px;background:linear-gradient(160deg,var(--surface-2),var(--surface));border-bottom:1px solid var(--line);position:relative;overflow:hidden;}
+  .card-viz{height:160px;background:linear-gradient(160deg,var(--surface-2),var(--surface));border-bottom:1px solid var(--line);position:relative;overflow:hidden;}
   .card-viz svg{position:absolute;inset:0;width:100%;height:100%;}
   .card-body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1;}
   .card-no{font-family:var(--mono);font-size:.72rem;color:var(--faint);letter-spacing:.08em;}
@@ -209,6 +221,42 @@
     display:inline-flex;align-items:center;gap:.5em;align-self:flex-start;transition:gap .2s;
   }
   .card-link:hover{gap:.9em;}
+
+  /* ---------- EXPERIENCE ---------- */
+  .timeline{list-style:none;margin:0;padding:0;position:relative;}
+  .timeline::before{content:"";position:absolute;left:19px;top:18px;bottom:18px;width:2px;background:var(--line);}
+  .exp{position:relative;padding-left:64px;border-bottom:1px solid var(--line);}
+  .exp:last-child{border-bottom:none;}
+  .exp-logo{
+    position:absolute;left:0;top:22px;width:40px;height:40px;border-radius:11px;z-index:1;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--brand,#3a4a5e);color:#fff;
+    font-family:var(--display);font-weight:700;font-size:1.05rem;line-height:1;
+    border:2px solid var(--ink);
+    box-shadow:0 0 0 1px var(--line-strong),0 6px 16px -6px rgba(0,0,0,.6);
+    transition:transform .2s,box-shadow .2s;
+  }
+  .exp:hover .exp-logo,.exp.open .exp-logo{transform:scale(1.06);box-shadow:0 0 0 1px var(--brand),0 8px 22px -6px rgba(0,0,0,.7);}
+  .exp-head{
+    width:100%;background:none;border:0;cursor:pointer;color:inherit;text-align:left;
+    display:flex;align-items:center;gap:20px;padding:22px 2px;font-family:var(--body);
+  }
+  .exp-head:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:6px;}
+  .exp-main{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0;}
+  .exp-role{font-family:var(--display);font-weight:600;font-size:1.14rem;letter-spacing:-.01em;color:var(--text);}
+  .exp-co{color:var(--muted);font-size:.94rem;}
+  .exp-date{font-family:var(--mono);font-size:.76rem;color:var(--faint);white-space:nowrap;letter-spacing:.02em;}
+  .exp-icon{position:relative;width:16px;height:16px;flex:none;}
+  .exp-icon::before,.exp-icon::after{content:"";position:absolute;background:var(--teal);border-radius:2px;transition:transform .28s ease,opacity .28s ease;}
+  .exp-icon::before{left:0;top:7px;width:16px;height:2px;}
+  .exp-icon::after{left:7px;top:0;width:2px;height:16px;}
+  .exp.open .exp-icon::after{transform:scaleY(0);opacity:0;}
+  .exp-body{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .35s ease,opacity .3s ease;}
+  .exp.open .exp-body{grid-template-rows:1fr;opacity:1;}
+  .exp-inner{overflow:hidden;}
+  .exp-body ul{margin:0;padding:0 0 24px 20px;}
+  .exp-body li{color:var(--muted);font-size:.96rem;margin:0 0 10px;line-height:1.55;}
+  .exp-body li::marker{color:var(--teal);}
 
   /* ---------- CONTACT ---------- */
   .contact{text-align:center;padding:108px 0;}
@@ -227,7 +275,8 @@
   @media(max-width:880px){
     .hero-grid{grid-template-columns:1fr;gap:44px;}
     .portrait{max-width:340px;}
-    .figure.band{height:200px;margin-top:38px;}
+    .k-control{margin-top:34px;justify-content:flex-start;}
+    .figure.band{height:280px;margin-top:14px;}
     .about-grid{grid-template-columns:1fr;gap:40px;}
     .proj-grid{grid-template-columns:1fr;}
     .nav-links{display:none;}
@@ -236,6 +285,12 @@
     body{font-size:16px;}
     .wrap{padding:0 20px;}
     .nav-inner,.foot-inner{padding-left:20px;padding-right:20px;}
+    .exp{padding-left:52px;}
+    .exp-logo{width:34px;height:34px;border-radius:9px;font-size:.92rem;}
+    .timeline::before{left:16px;}
+    .exp-head{gap:12px;padding:20px 2px;}
+    .exp-date{font-size:.68rem;}
+    .exp-role{font-size:1.05rem;}
   }
 
   @media(prefers-reduced-motion:reduce){
@@ -252,6 +307,7 @@
     <a href="#top" class="mono-mark"><span class="dot"></span>Adryan&nbsp;Witera</a>
     <div class="nav-links">
       <a href="#about">/ about</a>
+      <a href="#experience">/ experience</a>
       <a href="#work">/ work</a>
       <a href="#contact">/ contact</a>
     </div>
@@ -340,24 +396,136 @@
           <h3>Tools</h3>
           <div class="chips">
             <span class="chip">pandas</span><span class="chip">scikit-learn</span>
-            <span class="chip">Matplotlib / Seaborn</span><span class="chip">Spreadsheets</span>
+            <span class="chip">Matplotlib / Seaborn</span><span class="chip">Excel</span>
+            <span class="chip">Tableau</span>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="k-control reveal">
+      <span class="k-label">k-means · clusters</span>
+      <div class="k-btns" role="group" aria-label="Number of clusters (k)">
+        <button type="button" data-k="2">2</button>
+        <button type="button" data-k="3">3</button>
+        <button type="button" data-k="4" class="active">4</button>
+        <button type="button" data-k="5">5</button>
+        <button type="button" data-k="6">6</button>
       </div>
     </div>
 
     <div class="figure band reveal" aria-hidden="true">
       <canvas id="plot"></canvas>
       <span class="fig-cap tl">FIG.01</span>
-      <div class="legend">
-        <span><i style="background:var(--teal)"></i>segment a</span>
-        <span><i style="background:var(--amber)"></i>segment b</span>
-        <span><i style="background:var(--coral)"></i>segment c</span>
-        <span><i style="background:var(--blue)"></i>segment d</span>
-      </div>
-      <span class="fig-cap bl">k-means · k=4</span>
+      <div class="legend" id="legend"></div>
+      <span class="fig-cap bl" id="kcap">k-means · k=4</span>
       <span class="fig-cap br">customer segments</span>
     </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">02 — Experience</span>
+        <h2>Where I've worked</h2>
+      </div>
+      <span class="section-index">4 roles · 2023–2026</span>
+    </div>
+
+    <ol class="timeline">
+
+      <li class="exp open reveal">
+        <span class="exp-logo" style="--brand:#EE2737" aria-hidden="true">P</span>
+        <button class="exp-head" aria-expanded="true" aria-controls="exp-1">
+          <span class="exp-main">
+            <span class="exp-role">Pricing — Actuary Intern</span>
+            <span class="exp-co">Prudential</span>
+          </span>
+          <span class="exp-date">Oct 2025 – Jun 2026</span>
+          <span class="exp-icon" aria-hidden="true"></span>
+        </button>
+        <div class="exp-body" id="exp-1" role="region">
+          <div class="exp-inner">
+            <ul>
+              <li>Produced and presented monthly sales and margin monitoring reports for new products.</li>
+              <li>Led end-to-end User Acceptance Testing (UAT) for the PRUFuture Revamp and PRUMapan.</li>
+              <li>Owned negotiations with reinsurance partners on treaty drafts for new products.</li>
+              <li>Extracted and analyzed monthly in-force policy mix and sum-assured data from internal systems.</li>
+              <li>Calculated reinstatement interest for policy revivals on an ad-hoc basis.</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="exp reveal">
+        <span class="exp-logo" style="--brand:#00A758" aria-hidden="true">M</span>
+        <button class="exp-head" aria-expanded="false" aria-controls="exp-2">
+          <span class="exp-main">
+            <span class="exp-role">Reinsurance — Actuary Intern</span>
+            <span class="exp-co">Manulife</span>
+          </span>
+          <span class="exp-date">Jan 2024 – Aug 2024</span>
+          <span class="exp-icon" aria-hidden="true"></span>
+        </button>
+        <div class="exp-body" id="exp-2" role="region">
+          <div class="exp-inner">
+            <ul>
+              <li>Compiled monthly recaps of in-force, lapse, and claims policies to support reinsurer reporting.</li>
+              <li>Calculated premium income and allocated payable portions to reinsurance partners.</li>
+              <li>Updated the treaty database for newly issued products under reinsurance agreements.</li>
+              <li>Prepared regular and jumbo claims reports to support monthly reimbursement.</li>
+              <li>Built automated reinsurance claim-recovery reporting in the internal system, alongside Manulife's Asia regional team.</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="exp reveal">
+        <span class="exp-logo" style="--brand:#00A758" aria-hidden="true">M</span>
+        <button class="exp-head" aria-expanded="false" aria-controls="exp-3">
+          <span class="exp-main">
+            <span class="exp-role">Pricing — Actuary Intern</span>
+            <span class="exp-co">Manulife</span>
+          </span>
+          <span class="exp-date">Oct 2023 – Jan 2024</span>
+          <span class="exp-icon" aria-hidden="true"></span>
+        </button>
+        <div class="exp-body" id="exp-3" role="region">
+          <div class="exp-inner">
+            <ul>
+              <li>Supported the PPPB product revamp by building Excel illustrations from scratch.</li>
+              <li>Assisted a comprehensive three-year review report for bancassurance-distributed products.</li>
+              <li>Helped prepare OJK regulatory reports for credit-related insurance (mortgage and personal loan).</li>
+              <li>Prepared special quotations for individual and group products with profitability-margin considerations.</li>
+              <li>Learned and applied the Canadian actuarial software AXIS to assess profitability and risk for new business.</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="exp reveal">
+        <span class="exp-logo" style="--brand:#1F6FB2" aria-hidden="true">M</span>
+        <button class="exp-head" aria-expanded="false" aria-controls="exp-4">
+          <span class="exp-main">
+            <span class="exp-role">Actuary Intern</span>
+            <span class="exp-co">Maipark</span>
+          </span>
+          <span class="exp-date">Jul 2023 – Sep 2023</span>
+          <span class="exp-icon" aria-hidden="true"></span>
+        </button>
+        <div class="exp-body" id="exp-4" role="region">
+          <div class="exp-inner">
+            <ul>
+              <li>Analyzed and presented the company's Q2 statistical reports — exposure, premium, claims, and number of risks — across categories.</li>
+              <li>Built time-series forecasts in Python to predict future exposures.</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+    </ol>
   </div>
 </section>
 
@@ -365,7 +533,7 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <span class="eyebrow">02 — Selected work</span>
+        <span class="eyebrow">03 — Selected work</span>
         <h2>Projects</h2>
       </div>
       <span class="section-index">06 case studies</span>
@@ -507,12 +675,13 @@
 
 <section id="contact" class="contact">
   <div class="wrap">
-    <span class="eyebrow" style="justify-content:center;display:flex;">03 — Get in touch</span>
+    <span class="eyebrow" style="justify-content:center;display:flex;">04 — Get in touch</span>
     <h2>Let's talk about data &amp; what it can do for your team.</h2>
     <p>Open to data analyst and data science roles. The fastest way to reach me is email — project files for everything above are linked in the cards.</p>
     <div class="contact-links">
       <a class="btn btn-primary" href="mailto:adryan.gerald@gmail.com">Email me →</a>
       <a class="btn btn-ghost" href="https://www.linkedin.com/in/adryan-allen-gerald-witera-68bb0b1b6/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://github.com/adryanagw" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
 </section>
@@ -533,82 +702,127 @@
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  /* hero cluster plot */
+  /* experience accordion */
+  document.querySelectorAll('.exp-head').forEach(head=>{
+    head.addEventListener('click',()=>{
+      const item=head.closest('.exp');
+      const open=item.classList.toggle('open');
+      head.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
+  /* k-means cluster plot — editable k */
   (function(){
     const canvas = document.getElementById('plot');
     if(!canvas) return;
     const ctx = canvas.getContext('2d');
-    const css = getComputedStyle(document.documentElement);
-    const colors = ['--teal','--amber','--coral','--blue'].map(v=>css.getPropertyValue(v).trim());
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const palette = ['#FF8A3D','#FFB54A','#FF6F61','#E58FB0','#7FA8CF','#6FD0C4'];
+    const letters = ['a','b','c','d','e','f'];
     let W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2);
-    let pts=[], centroids=[], t=0;
+    let pts=[], centroids=[], t=0, k=4, started=false;
+    const N=120;
 
-    function setup(){
-      const r = canvas.getBoundingClientRect();
+    function sizeCanvas(){
+      const r=canvas.getBoundingClientRect();
       W=r.width; H=r.height;
       canvas.width=W*dpr; canvas.height=H*dpr;
       ctx.setTransform(dpr,0,0,dpr,0,0);
-      const pad=W*0.14;
-      centroids=[
-        {x:pad+ (W-2*pad)*0.22, y:pad+(H-2*pad)*0.28},
-        {x:pad+ (W-2*pad)*0.74, y:pad+(H-2*pad)*0.66},
-        {x:pad+ (W-2*pad)*0.80, y:pad+(H-2*pad)*0.24},
-        {x:pad+ (W-2*pad)*0.30, y:pad+(H-2*pad)*0.74}
-      ];
+    }
+    function initPoints(){
       pts=[];
-      const N=110;
       for(let i=0;i<N;i++){
-        const c=Math.floor(Math.random()*4);
-        const spread=W*0.085;
-        pts.push({
-          x:Math.random()*W, y:Math.random()*H,
-          tx:centroids[c].x+(Math.random()-0.5)*spread*2,
-          ty:centroids[c].y+(Math.random()-0.5)*spread*2,
-          c:c, ph:Math.random()*Math.PI*2, sp:0.6+Math.random()*0.8
-        });
+        pts.push({x:Math.random()*W,y:Math.random()*H,tx:0,ty:0,c:0,
+                  ph:Math.random()*Math.PI*2, sp:0.6+Math.random()*0.8});
       }
     }
-
+    function makeCentroids(kk){
+      const pad=W*0.14, cs=[], minD=Math.min(W,H)*0.20; let guard=0;
+      while(cs.length<kk){
+        guard++;
+        const cx=pad+Math.random()*(W-2*pad), cy=pad+Math.random()*(H-2*pad);
+        if(cs.every(c=>Math.hypot(c.x-cx,c.y-cy)>minD) || guard>300) cs.push({x:cx,y:cy});
+      }
+      return cs;
+    }
+    function assign(){
+      const spread=Math.min(W,H)*0.10;
+      for(const p of pts){
+        const c=Math.floor(Math.random()*k);
+        p.c=c;
+        p.tx=centroids[c].x+(Math.random()-0.5)*spread*2;
+        p.ty=centroids[c].y+(Math.random()-0.5)*spread*2;
+      }
+    }
+    function updateLegend(){
+      const lg=document.getElementById('legend'); if(!lg) return;
+      lg.innerHTML='';
+      for(let i=0;i<k;i++){
+        const s=document.createElement('span');
+        s.innerHTML='<i style="background:'+palette[i]+'"></i>segment '+letters[i];
+        lg.appendChild(s);
+      }
+    }
+    function rebuild(kk){
+      k=kk;
+      centroids=makeCentroids(k);
+      assign();
+      updateLegend();
+      const cap=document.getElementById('kcap'); if(cap) cap.textContent='k-means · k='+k;
+      if(reduce){ for(const p of pts){p.x=p.tx;p.y=p.ty;} draw(); }
+    }
     function grid(){
       ctx.clearRect(0,0,W,H);
-      ctx.strokeStyle='rgba(232,237,244,0.05)';
-      ctx.lineWidth=1;
+      ctx.strokeStyle='rgba(226,236,247,0.05)'; ctx.lineWidth=1;
       const step=W/8;
       for(let x=step;x<W;x+=step){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
       for(let y=step;y<H;y+=step){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
-      /* axes */
-      ctx.strokeStyle='rgba(232,237,244,0.14)';
+      ctx.strokeStyle='rgba(226,236,247,0.14)';
       const m=W*0.08;
       ctx.beginPath();ctx.moveTo(m,m);ctx.lineTo(m,H-m);ctx.lineTo(W-m,H-m);ctx.stroke();
     }
-
-    function frame(){
+    function draw(){
       grid();
-      t+=0.012;
       ctx.globalAlpha=0.9;
       for(const p of pts){
-        if(reduce){
-          p.x=p.tx; p.y=p.ty;
-        }else{
-          p.x += (p.tx - p.x)*0.045;
-          p.y += (p.ty - p.y)*0.045;
-        }
-        const px = reduce ? p.x : p.x + Math.cos(t*0.5 + p.ph)*0.5;
-        const py = reduce ? p.y : p.y + Math.sin(t*p.sp + p.ph)*0.6;
+        if(!reduce){ p.x+=(p.tx-p.x)*0.05; p.y+=(p.ty-p.y)*0.05; }
+        const px=reduce?p.x:p.x+Math.cos(t*0.5+p.ph)*0.5;
+        const py=reduce?p.y:p.y+Math.sin(t*p.sp+p.ph)*0.6;
+        ctx.beginPath(); ctx.fillStyle=palette[p.c%palette.length];
+        ctx.arc(px,py,3.1,0,Math.PI*2); ctx.fill();
+      }
+      /* centroid markers */
+      ctx.globalAlpha=0.55; ctx.lineWidth=1.4; ctx.strokeStyle='rgba(234,241,249,0.65)';
+      for(const c of centroids){
+        ctx.beginPath(); ctx.arc(c.x,c.y,8,0,Math.PI*2); ctx.stroke();
         ctx.beginPath();
-        ctx.fillStyle = colors[p.c];
-        ctx.arc(px, py, 3.1, 0, Math.PI*2);
-        ctx.fill();
+        ctx.moveTo(c.x-3,c.y); ctx.lineTo(c.x+3,c.y);
+        ctx.moveTo(c.x,c.y-3); ctx.lineTo(c.x,c.y+3); ctx.stroke();
       }
       ctx.globalAlpha=1;
-      if(!reduce) requestAnimationFrame(frame);
     }
-
-    function start(){ setup(); frame(); }
+    function frame(){ t+=0.012; draw(); if(!reduce) requestAnimationFrame(frame); }
+    function start(){
+      sizeCanvas();
+      if(!started){ initPoints(); started=true; }
+      rebuild(k);
+      frame();
+    }
     start();
+
+    document.querySelectorAll('.k-btns button').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.k-btns button').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        rebuild(parseInt(btn.getAttribute('data-k'),10));
+      });
+    });
+
     let rt;
-    window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(start,180);});
+    window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{
+      sizeCanvas(); centroids=makeCentroids(k); assign();
+      if(reduce){ for(const p of pts){p.x=p.tx;p.y=p.ty;} draw(); }
+    },180);});
   })();
 </script>
 </body>
