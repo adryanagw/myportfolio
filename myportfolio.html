@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adryan Allen Gerald Witera — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B1018;
+    --surface:#121A26;
+    --surface-2:#18222F;
+    --line:rgba(232,237,244,.09);
+    --line-strong:rgba(232,237,244,.16);
+    --text:#E8EDF4;
+    --muted:#94A1B5;
+    --faint:#5E6B7E;
+    --teal:#57C7C0;
+    --teal-dim:rgba(87,199,192,.14);
+    --amber:#E9A23B;
+    --coral:#E96E8B;
+    --blue:#6FA8F0;
+    --display:"Space Grotesk",sans-serif;
+    --body:"Plus Jakarta Sans",sans-serif;
+    --mono:"IBM Plex Mono",monospace;
+    --maxw:1140px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(120% 90% at 70% 0%,#000 0%,transparent 70%);
+            mask-image:radial-gradient(120% 90% at 70% 0%,#000 0%,transparent 70%);
+    opacity:.5;
+    pointer-events:none;
+    z-index:0;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--teal);color:var(--ink);}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1;}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--teal);
+    display:inline-flex;align-items:center;gap:.6em;
+  }
+  .eyebrow::before{
+    content:"";width:22px;height:1px;background:var(--teal);display:inline-block;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(10px);
+    background:rgba(11,16,24,.72);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:16px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .mono-mark{
+    font-family:var(--mono);font-weight:500;font-size:.9rem;letter-spacing:.04em;
+    display:flex;align-items:center;gap:.55em;color:var(--text);
+  }
+  .mono-mark .dot{width:9px;height:9px;border-radius:50%;background:var(--teal);box-shadow:0 0 12px var(--teal);}
+  .nav-links{display:flex;gap:30px;align-items:center;}
+  .nav-links a{font-family:var(--mono);font-size:.82rem;color:var(--muted);transition:color .2s;letter-spacing:.02em;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{
+    font-family:var(--mono);font-size:.82rem;
+    border:1px solid var(--line-strong);
+    padding:8px 16px;border-radius:7px;color:var(--text);
+    transition:border-color .2s,background .2s;
+  }
+  .nav-cta:hover{border-color:var(--teal);background:var(--teal-dim);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:84px 0 96px;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
+  .hero h1{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(2.7rem,6.4vw,5rem);
+    line-height:1.02;letter-spacing:-.02em;
+    margin:22px 0 0;
+  }
+  .hero h1 .accent{color:var(--teal);}
+  .role{
+    font-family:var(--display);font-weight:500;
+    font-size:clamp(1.05rem,2.2vw,1.35rem);
+    color:var(--muted);margin-top:14px;
+  }
+  .lede{font-size:1.06rem;color:var(--muted);max-width:30em;margin-top:22px;}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:30px;font-family:var(--mono);font-size:.78rem;color:var(--faint);}
+  .hero-meta span{display:inline-flex;align-items:center;gap:.5em;}
+  .hero-meta b{color:var(--text);font-weight:500;}
+  .hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono);font-size:.85rem;
+    padding:12px 22px;border-radius:8px;cursor:pointer;
+    transition:transform .15s,background .2s,border-color .2s;display:inline-flex;align-items:center;gap:.6em;
+  }
+  .btn-primary{background:var(--teal);color:var(--ink);font-weight:500;border:1px solid var(--teal);}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{border:1px solid var(--line-strong);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--teal);background:var(--teal-dim);}
+
+  /* ---------- FIGURE PANEL (hero plot) ---------- */
+  .figure{
+    position:relative;border:1px solid var(--line-strong);border-radius:14px;
+    background:linear-gradient(160deg,var(--surface),var(--ink));
+    overflow:hidden;aspect-ratio:1/1;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,.7);
+  }
+  .figure canvas{display:block;width:100%;height:100%;}
+  .fig-cap{position:absolute;font-family:var(--mono);font-size:.68rem;color:var(--faint);letter-spacing:.04em;pointer-events:none;}
+  .fig-cap.tl{top:14px;left:16px;color:var(--teal);}
+  .fig-cap.bl{bottom:14px;left:16px;}
+  .fig-cap.br{bottom:14px;right:16px;}
+  .legend{position:absolute;top:14px;right:16px;display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--muted);}
+  .legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:84px 0;position:relative;z-index:1;}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:46px;flex-wrap:wrap;}
+  .section-head h2{
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.015em;margin:14px 0 0;
+  }
+  .section-index{font-family:var(--mono);font-size:.78rem;color:var(--faint);}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;}
+  .about-body p{color:var(--muted);font-size:1.06rem;}
+  .about-body p b{color:var(--text);font-weight:600;}
+  .toolkit{display:grid;gap:22px;align-content:start;}
+  .tool-group h3{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin:0 0 12px;font-weight:500;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    font-family:var(--mono);font-size:.78rem;color:var(--text);
+    border:1px solid var(--line);background:var(--surface);
+    padding:6px 12px;border-radius:7px;transition:border-color .2s,color .2s;
+  }
+  .chip:hover{border-color:var(--teal);color:var(--teal);}
+
+  /* ---------- PROJECTS ---------- */
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .card{
+    border:1px solid var(--line);border-radius:14px;background:var(--surface);
+    overflow:hidden;display:flex;flex-direction:column;
+    transition:transform .25s,border-color .25s,box-shadow .25s;
+  }
+  .card:hover{transform:translateY(-5px);border-color:var(--line-strong);box-shadow:0 28px 50px -28px rgba(0,0,0,.75);}
+  .card-viz{height:132px;background:linear-gradient(160deg,var(--surface-2),var(--surface));border-bottom:1px solid var(--line);position:relative;overflow:hidden;}
+  .card-viz svg{position:absolute;inset:0;width:100%;height:100%;}
+  .card-body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1;}
+  .card-no{font-family:var(--mono);font-size:.72rem;color:var(--faint);letter-spacing:.08em;}
+  .card h3{font-family:var(--display);font-weight:600;font-size:1.18rem;line-height:1.28;margin:8px 0 0;letter-spacing:-.01em;}
+  .card p{color:var(--muted);font-size:.95rem;margin:12px 0 0;flex:1;}
+  .card-tags{display:flex;flex-wrap:wrap;gap:7px;margin:18px 0 20px;}
+  .card-tags span{font-family:var(--mono);font-size:.7rem;color:var(--muted);border:1px solid var(--line);padding:4px 9px;border-radius:6px;}
+  .card-link{
+    font-family:var(--mono);font-size:.82rem;color:var(--teal);
+    display:inline-flex;align-items:center;gap:.5em;align-self:flex-start;transition:gap .2s;
+  }
+  .card-link:hover{gap:.9em;}
+
+  /* ---------- CONTACT ---------- */
+  .contact{text-align:center;padding:108px 0;}
+  .contact h2{font-family:var(--display);font-weight:700;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.02em;margin:18px auto 0;max-width:14em;}
+  .contact p{color:var(--muted);max-width:34em;margin:20px auto 0;}
+  .contact-links{display:flex;gap:14px;justify-content:center;margin-top:38px;flex-wrap:wrap;}
+
+  footer{border-top:1px solid var(--line);padding:30px 0;}
+  .foot-inner{max-width:var(--maxw);margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:.74rem;color:var(--faint);}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:880px){
+    .hero-grid{grid-template-columns:1fr;gap:44px;}
+    .figure{aspect-ratio:4/3;max-width:520px;}
+    .about-grid{grid-template-columns:1fr;gap:40px;}
+    .proj-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+  @media(max-width:480px){
+    body{font-size:16px;}
+    .wrap{padding:0 20px;}
+    .nav-inner,.foot-inner{padding-left:20px;padding-right:20px;}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    .card,.btn{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="mono-mark"><span class="dot"></span>Adryan&nbsp;Witera</a>
+    <div class="nav-links">
+      <a href="#about">/ about</a>
+      <a href="#work">/ work</a>
+      <a href="#contact">/ contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<header class="hero wrap" id="top">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">Data Analyst · Jakarta, ID</span>
+      <h1>I turn messy data into <span class="accent">decisions.</span></h1>
+      <p class="role">SQL · Statistical modeling · Customer analytics</p>
+      <p class="lede">
+        I'm <b>Adryan Allen Gerald Witera</b>, a data analyst who builds models and digs through
+        datasets to answer one question: what should the business do next? Below are
+        six projects spanning prediction, segmentation, and performance analysis.
+      </p>
+      <div class="hero-meta">
+        <span><b>6</b> projects</span>
+        <span><b>Python · SQL</b> core stack</span>
+        <span><b>ML</b> + analytics</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary">View the work →</a>
+        <a href="#contact" class="btn btn-ghost">Contact</a>
+      </div>
+    </div>
+
+    <div class="figure" aria-hidden="true">
+      <canvas id="plot"></canvas>
+      <span class="fig-cap tl">FIG.01</span>
+      <div class="legend">
+        <span><i style="background:var(--teal)"></i>segment a</span>
+        <span><i style="background:var(--amber)"></i>segment b</span>
+        <span><i style="background:var(--coral)"></i>segment c</span>
+        <span><i style="background:var(--blue)"></i>segment d</span>
+      </div>
+      <span class="fig-cap bl">k-means · k=4</span>
+      <span class="fig-cap br">customer segments</span>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">01 — Profile</span>
+        <h2>About</h2>
+      </div>
+      <span class="section-index">who / what / how</span>
+    </div>
+    <div class="about-grid">
+      <div class="about-body reveal">
+        <p>
+          I work at the point where <b>raw data becomes a recommendation</b>. That means
+          writing SQL to interrogate a database, running regression and classification
+          models to explain and predict behavior, and segmenting customers so teams know
+          exactly who to talk to and why.
+        </p>
+        <p>
+          My projects below come from real-world style cases — e-commerce PayLater
+          adoption, marketplace spending, grocery sales, banking segmentation, campaign
+          evaluation, and a healthcare prediction problem. Each one ends with something
+          actionable, not just a chart.
+        </p>
+        <p>
+          I care about <b>clarity</b>: a model is only useful if a non-technical person
+          can understand what it's telling them — and what to do about it.
+        </p>
+      </div>
+      <div class="toolkit reveal">
+        <div class="tool-group">
+          <h3>Languages &amp; Query</h3>
+          <div class="chips"><span class="chip">Python</span><span class="chip">SQL</span></div>
+        </div>
+        <div class="tool-group">
+          <h3>Analysis</h3>
+          <div class="chips">
+            <span class="chip">Exploratory analysis</span><span class="chip">Regression analysis</span>
+            <span class="chip">Statistical testing</span><span class="chip">Campaign evaluation</span>
+          </div>
+        </div>
+        <div class="tool-group">
+          <h3>Machine Learning</h3>
+          <div class="chips">
+            <span class="chip">Logistic regression</span><span class="chip">k-means clustering</span>
+            <span class="chip">RFM segmentation</span><span class="chip">Classification</span>
+          </div>
+        </div>
+        <div class="tool-group">
+          <h3>Tools</h3>
+          <div class="chips">
+            <span class="chip">pandas</span><span class="chip">scikit-learn</span>
+            <span class="chip">Matplotlib / Seaborn</span><span class="chip">Spreadsheets</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">02 — Selected work</span>
+        <h2>Projects</h2>
+      </div>
+      <span class="section-index">06 case studies</span>
+    </div>
+
+    <div class="proj-grid">
+
+      <!-- 1: PayLater logistic -->
+      <article class="card reveal">
+        <div class="card-viz">
+          <svg viewBox="0 0 320 132" preserveAspectRatio="none">
+            <line x1="20" y1="110" x2="300" y2="110" stroke="var(--line-strong)"/>
+            <line x1="20" y1="20" x2="20" y2="110" stroke="var(--line-strong)"/>
+            <path d="M20 102 C 110 100, 140 100, 160 66 C 180 32, 210 30, 300 28" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+            <line x1="160" y1="20" x2="160" y2="110" stroke="var(--line)" stroke-dasharray="3 4"/>
+            <circle cx="60" cy="100" r="3" fill="var(--amber)"/><circle cx="95" cy="99" r="3" fill="var(--amber)"/>
+            <circle cx="240" cy="32" r="3" fill="var(--coral)"/><circle cx="275" cy="30" r="3" fill="var(--coral)"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-no">CASE 01 · RevoShop</span>
+          <h3>PayLater Adoption — Logistic Model Prediction</h3>
+          <p>Built a logistic regression model to predict which customers are likely to adopt PayLater, turning behavioral and transactional signals into a probability the business can act on.</p>
+          <div class="card-tags"><span>Logistic Regression</span><span>Classification</span><span>Python</span></div>
+          <a class="card-link" href="https://drive.google.com/drive/folders/1lrFkQh7vqHoCFNUbKd9i_yIAB2GIXLYR?usp=sharing" target="_blank" rel="noopener">View project →</a>
+        </div>
+      </article>
+
+      <!-- 2: Regression -->
+      <article class="card reveal">
+        <div class="card-viz">
+          <svg viewBox="0 0 320 132" preserveAspectRatio="none">
+            <line x1="20" y1="110" x2="300" y2="110" stroke="var(--line-strong)"/>
+            <line x1="20" y1="20" x2="20" y2="110" stroke="var(--line-strong)"/>
+            <line x1="30" y1="98" x2="295" y2="34" stroke="var(--teal)" stroke-width="2.5"/>
+            <circle cx="55" cy="96" r="3.2" fill="var(--amber)"/><circle cx="90" cy="80" r="3.2" fill="var(--amber)"/>
+            <circle cx="120" cy="86" r="3.2" fill="var(--amber)"/><circle cx="150" cy="64" r="3.2" fill="var(--amber)"/>
+            <circle cx="185" cy="70" r="3.2" fill="var(--amber)"/><circle cx="215" cy="50" r="3.2" fill="var(--amber)"/>
+            <circle cx="250" cy="52" r="3.2" fill="var(--amber)"/><circle cx="280" cy="36" r="3.2" fill="var(--amber)"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-no">CASE 02 · TokoBli</span>
+          <h3>Key Factors Impacting Customer Spending</h3>
+          <p>Used regression analysis to isolate the drivers behind customer spend — quantifying how much each factor moves the needle and where the marketplace should focus.</p>
+          <div class="card-tags"><span>Regression</span><span>Feature Analysis</span><span>Python</span></div>
+          <a class="card-link" href="https://drive.google.com/drive/folders/1W7_RvrT8J4zMn3dd4oTy7Vz-3AFkoV3s?usp=sharing" target="_blank" rel="noopener">View project →</a>
+        </div>
+      </article>
+
+      <!-- 3: SQL bars -->
+      <article class="card reveal">
+        <div class="card-viz">
+          <svg viewBox="0 0 320 132" preserveAspectRatio="none">
+            <line x1="20" y1="110" x2="300" y2="110" stroke="var(--line-strong)"/>
+            <rect x="44" y="78" width="30" height="32" fill="var(--teal)" opacity=".55"/>
+            <rect x="92" y="60" width="30" height="50" fill="var(--teal)" opacity=".7"/>
+            <rect x="140" y="40" width="30" height="70" fill="var(--teal)"/>
+            <rect x="188" y="66" width="30" height="44" fill="var(--teal)" opacity=".7"/>
+            <rect x="236" y="50" width="30" height="60" fill="var(--teal)" opacity=".85"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-no">CASE 03 · RevoGrocers</span>
+          <h3>Sales Performance Analysis with SQL</h3>
+          <p>Wrote SQL to dig through grocery sales data — surfacing top categories, revenue trends, and performance gaps directly from the database.</p>
+          <div class="card-tags"><span>SQL</span><span>Sales Analytics</span><span>Reporting</span></div>
+          <a class="card-link" href="https://drive.google.com/drive/folders/173V_ytMLQQb0FT8qUX1dLzFXcfUk4OBe?usp=drive_link" target="_blank" rel="noopener">View project →</a>
+        </div>
+      </article>
+
+      <!-- 4: k-means clusters -->
+      <article class="card reveal">
+        <div class="card-viz">
+          <svg viewBox="0 0 320 132" preserveAspectRatio="none">
+            <g fill="var(--teal)">
+              <circle cx="64" cy="44" r="3.4"/><circle cx="78" cy="56" r="3.4"/><circle cx="56" cy="62" r="3.4"/><circle cx="72" cy="40" r="3.4"/><circle cx="86" cy="48" r="3.4"/>
+            </g>
+            <g fill="var(--amber)">
+              <circle cx="160" cy="86" r="3.4"/><circle cx="176" cy="94" r="3.4"/><circle cx="150" cy="98" r="3.4"/><circle cx="168" cy="78" r="3.4"/><circle cx="184" cy="88" r="3.4"/>
+            </g>
+            <g fill="var(--coral)">
+              <circle cx="244" cy="40" r="3.4"/><circle cx="258" cy="52" r="3.4"/><circle cx="236" cy="56" r="3.4"/><circle cx="252" cy="36" r="3.4"/><circle cx="268" cy="48" r="3.4"/>
+            </g>
+            <g fill="var(--blue)">
+              <circle cx="118" cy="40" r="3.4"/><circle cx="130" cy="50" r="3.4"/><circle cx="110" cy="52" r="3.4"/><circle cx="126" cy="36" r="3.4"/>
+            </g>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-no">CASE 04 · RevoBank</span>
+          <h3>Customer Segmentation — k-means &amp; RFM</h3>
+          <p>Combined RFM scoring with k-means clustering to group the bank's customers into actionable segments, giving marketing a clear map for targeted growth.</p>
+          <div class="card-tags"><span>k-means</span><span>RFM</span><span>Segmentation</span></div>
+          <a class="card-link" href="https://drive.google.com/drive/folders/1CRJYILqsbJRob2tUZTUb5y_sOwKRqqjo?usp=sharing" target="_blank" rel="noopener">View project →</a>
+        </div>
+      </article>
+
+      <!-- 5: twin peaks campaign -->
+      <article class="card reveal">
+        <div class="card-viz">
+          <svg viewBox="0 0 320 132" preserveAspectRatio="none">
+            <line x1="20" y1="110" x2="300" y2="110" stroke="var(--line-strong)"/>
+            <path d="M20 92 L70 88 L100 36 L130 86 L185 84 L215 30 L245 86 L300 84" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+            <line x1="100" y1="36" x2="100" y2="110" stroke="var(--amber)" stroke-dasharray="3 4" opacity=".6"/>
+            <line x1="215" y1="30" x2="215" y2="110" stroke="var(--amber)" stroke-dasharray="3 4" opacity=".6"/>
+            <circle cx="100" cy="36" r="3.6" fill="var(--amber)"/><circle cx="215" cy="30" r="3.6" fill="var(--coral)"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-no">CASE 05 · TokoBli</span>
+          <h3>Twin-Dates Campaign Evaluation</h3>
+          <p>Investigated the sales impact of twin-date campaigns (11.11 / 12.12) — measuring lift, comparing periods, and separating real campaign effect from noise.</p>
+          <div class="card-tags"><span>Campaign Analysis</span><span>A/B thinking</span><span>SQL</span></div>
+          <a class="card-link" href="https://drive.google.com/drive/folders/1Ws9pn0r7-6j1HtlAdzokIWpxPKFKdosF?usp=sharing" target="_blank" rel="noopener">View project →</a>
+        </div>
+      </article>
+
+      <!-- 6: ECG / heart -->
+      <article class="card reveal">
+        <div class="card-viz">
+          <svg viewBox="0 0 320 132" preserveAspectRatio="none">
+            <line x1="20" y1="66" x2="300" y2="66" stroke="var(--line)" stroke-dasharray="2 5"/>
+            <path d="M20 66 H80 L96 66 L106 40 L118 96 L130 52 L140 66 H190 L206 66 L216 40 L228 96 L240 52 L250 66 H300" fill="none" stroke="var(--coral)" stroke-width="2.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-no">CASE 06 · Healthcare</span>
+          <h3>Predicting Heart Attack Occurrence</h3>
+          <p>Trained a logistic regression model on clinical indicators to estimate heart-attack risk — balancing predictive accuracy with the interpretability a healthcare context demands.</p>
+          <div class="card-tags"><span>Logistic Regression</span><span>Healthcare</span><span>Python</span></div>
+          <a class="card-link" href="https://drive.google.com/drive/folders/1OPdq0TnxfaVUMw_bHbPC_VDsbUO-FjA9?hl=id" target="_blank" rel="noopener">View project →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <span class="eyebrow" style="justify-content:center;display:flex;">03 — Get in touch</span>
+    <h2>Let's talk about data &amp; what it can do for your team.</h2>
+    <p>Open to data analyst and data science roles. The fastest way to reach me is email — project files for everything above are linked in the cards.</p>
+    <div class="contact-links">
+      <a class="btn btn-primary" href="mailto:adryan.gerald@gmail.com">Email me →</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/adryan-allen-gerald-witera-68bb0b1b6/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <span>© <span id="yr"></span> Adryan Allen Gerald Witera</span>
+    <span>Built as a data analytics portfolio · Jakarta, ID</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* scroll reveal */
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  /* hero cluster plot */
+  (function(){
+    const canvas = document.getElementById('plot');
+    if(!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const css = getComputedStyle(document.documentElement);
+    const colors = ['--teal','--amber','--coral','--blue'].map(v=>css.getPropertyValue(v).trim());
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2);
+    let pts=[], centroids=[], t=0;
+
+    function setup(){
+      const r = canvas.getBoundingClientRect();
+      W=r.width; H=r.height;
+      canvas.width=W*dpr; canvas.height=H*dpr;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      const pad=W*0.14;
+      centroids=[
+        {x:pad+ (W-2*pad)*0.22, y:pad+(H-2*pad)*0.28},
+        {x:pad+ (W-2*pad)*0.74, y:pad+(H-2*pad)*0.66},
+        {x:pad+ (W-2*pad)*0.80, y:pad+(H-2*pad)*0.24},
+        {x:pad+ (W-2*pad)*0.30, y:pad+(H-2*pad)*0.74}
+      ];
+      pts=[];
+      const N=110;
+      for(let i=0;i<N;i++){
+        const c=Math.floor(Math.random()*4);
+        const spread=W*0.085;
+        pts.push({
+          x:Math.random()*W, y:Math.random()*H,
+          tx:centroids[c].x+(Math.random()-0.5)*spread*2,
+          ty:centroids[c].y+(Math.random()-0.5)*spread*2,
+          c:c, ph:Math.random()*Math.PI*2, sp:0.6+Math.random()*0.8
+        });
+      }
+    }
+
+    function grid(){
+      ctx.clearRect(0,0,W,H);
+      ctx.strokeStyle='rgba(232,237,244,0.05)';
+      ctx.lineWidth=1;
+      const step=W/8;
+      for(let x=step;x<W;x+=step){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+      for(let y=step;y<H;y+=step){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+      /* axes */
+      ctx.strokeStyle='rgba(232,237,244,0.14)';
+      const m=W*0.08;
+      ctx.beginPath();ctx.moveTo(m,m);ctx.lineTo(m,H-m);ctx.lineTo(W-m,H-m);ctx.stroke();
+    }
+
+    function frame(){
+      grid();
+      t+=0.012;
+      ctx.globalAlpha=0.9;
+      for(const p of pts){
+        if(reduce){
+          p.x=p.tx; p.y=p.ty;
+        }else{
+          p.x += (p.tx - p.x)*0.045;
+          p.y += (p.ty - p.y)*0.045;
+        }
+        const px = reduce ? p.x : p.x + Math.cos(t*0.5 + p.ph)*0.5;
+        const py = reduce ? p.y : p.y + Math.sin(t*p.sp + p.ph)*0.6;
+        ctx.beginPath();
+        ctx.fillStyle = colors[p.c];
+        ctx.arc(px, py, 3.1, 0, Math.PI*2);
+        ctx.fill();
+      }
+      ctx.globalAlpha=1;
+      if(!reduce) requestAnimationFrame(frame);
+    }
+
+    function start(){ setup(); frame(); }
+    start();
+    let rt;
+    window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(start,180);});
+  })();
+</script>
+</body>
+</html>
