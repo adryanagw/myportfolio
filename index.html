@@ -9,9 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0A1A30;
-    --surface:#0F2238;
-    --surface-2:#163049;
+    --ink:#061320;
+    --surface:#0B1E31;
+    --surface-2:#11283D;
     --line:rgba(226,236,247,.10);
     --line-strong:rgba(226,236,247,.18);
     --text:#EAF1F9;
@@ -51,6 +51,7 @@
     pointer-events:none;
     z-index:0;
   }
+  #stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;}
   a{color:inherit;text-decoration:none;}
   ::selection{background:var(--teal);color:var(--ink);}
 
@@ -149,7 +150,7 @@
   .portrait img{display:block;width:100%;height:auto;}
   .portrait::after{
     content:"";position:absolute;left:0;right:0;bottom:0;height:40%;
-    background:linear-gradient(to top,rgba(10,26,48,.94),transparent);pointer-events:none;
+    background:linear-gradient(to top,rgba(6,19,32,.94),transparent);pointer-events:none;
   }
   .portrait-tag{
     position:absolute;left:18px;bottom:16px;z-index:2;
@@ -221,6 +222,9 @@
     display:inline-flex;align-items:center;gap:.5em;align-self:flex-start;transition:gap .2s;
   }
   .card-link:hover{gap:.9em;}
+  .card-links{display:flex;gap:22px;align-items:center;flex-wrap:wrap;}
+  .card-link.alt{color:var(--muted);}
+  .card-link.alt:hover{color:var(--text);}
 
   /* ---------- EXPERIENCE ---------- */
   .timeline{list-style:none;margin:0;padding:0;position:relative;}
@@ -302,6 +306,8 @@
 </head>
 <body>
 
+<canvas id="stars" aria-hidden="true"></canvas>
+
 <nav>
   <div class="nav-inner">
     <a href="#top" class="mono-mark"><span class="dot"></span>Adryan&nbsp;Witera</a>
@@ -324,10 +330,10 @@
       <p class="lede">
         I'm <b>Adryan Allen Gerald Witera</b>, a data analyst who builds models and digs through
         datasets to answer one question: what should the business do next? Below are
-        six projects spanning prediction, segmentation, and performance analysis.
+        eight projects spanning prediction, segmentation, and performance analysis.
       </p>
       <div class="hero-meta">
-        <span><b>6</b> projects</span>
+        <span><b>8</b> projects</span>
         <span><b>Python · SQL</b> core stack</span>
         <span><b>ML</b> + analytics</span>
       </div>
@@ -536,7 +542,7 @@
         <span class="eyebrow">03 — Selected work</span>
         <h2>Projects</h2>
       </div>
-      <span class="section-index">06 case studies</span>
+      <span class="section-index">08 case studies</span>
     </div>
 
     <div class="proj-grid">
@@ -666,6 +672,49 @@
           <p>Trained a logistic regression model on clinical indicators to estimate heart-attack risk — balancing predictive accuracy with the interpretability a healthcare context demands.</p>
           <div class="card-tags"><span>Logistic Regression</span><span>Healthcare</span><span>Python</span></div>
           <a class="card-link" href="https://drive.google.com/drive/folders/1OPdq0TnxfaVUMw_bHbPC_VDsbUO-FjA9?hl=id" target="_blank" rel="noopener">View project →</a>
+        </div>
+      </article>
+
+      <!-- 7: Tableau dashboard / treemap -->
+      <article class="card reveal">
+        <div class="card-viz">
+          <svg viewBox="0 0 320 132" preserveAspectRatio="none">
+            <rect x="14" y="14" width="150" height="104" fill="var(--teal)" opacity=".85"/>
+            <rect x="168" y="14" width="90" height="50" fill="var(--amber)" opacity=".8"/>
+            <rect x="262" y="14" width="44" height="50" fill="var(--coral)" opacity=".75"/>
+            <rect x="168" y="68" width="58" height="50" fill="var(--coral)" opacity=".55"/>
+            <rect x="230" y="68" width="76" height="50" fill="var(--blue)" opacity=".7"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-no">CASE 07 · Revo Hospital</span>
+          <h3>Hospital Network Performance Dashboard</h3>
+          <p>A strategic Tableau dashboard for an 8-branch hospital network across Java — surfacing revenue scale, collection risk, and bed-capacity intensity in one view. Built on a star schema of 5,000 admissions, with a geo map, KPI strip, treemap, and a pending-revenue heatmap for the Network Director.</p>
+          <div class="card-tags"><span>Tableau</span><span>Dashboard</span><span>Healthcare</span></div>
+          <div class="card-links">
+            <a class="card-link" href="https://public.tableau.com/app/profile/adryan.witera/viz/Hospital_17789293604390/Used?publish=yes" target="_blank" rel="noopener">View dashboard →</a>
+            <a class="card-link alt" href="https://docs.google.com/presentation/d/1MxHV6FIzC7OP38izURjNVF0puwqJuJZBoLpp5tTBKj4/edit?usp=sharing" target="_blank" rel="noopener">Case study ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8: Credit risk / gauge -->
+      <article class="card reveal">
+        <div class="card-viz">
+          <svg viewBox="0 0 320 132" preserveAspectRatio="none">
+            <path d="M80 112 A80 80 0 0 1 120 42.7" fill="none" stroke="var(--blue)" stroke-width="12" stroke-linecap="round"/>
+            <path d="M120 42.7 A80 80 0 0 1 200 42.7" fill="none" stroke="var(--amber)" stroke-width="12"/>
+            <path d="M200 42.7 A80 80 0 0 1 240 112" fill="none" stroke="var(--coral)" stroke-width="12" stroke-linecap="round"/>
+            <line x1="160" y1="112" x2="184" y2="46" stroke="var(--teal)" stroke-width="3"/>
+            <circle cx="160" cy="112" r="6" fill="var(--teal)"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-no">CASE 08 · Risk Analytics</span>
+          <h3>Credit Risk Modeling</h3>
+          <p>A credit-risk model that scores borrowers by their likelihood of default — turning applicant and financial features into a risk classification that supports faster, more consistent lending decisions.</p>
+          <div class="card-tags"><span>Credit Risk</span><span>Classification</span><span>Python</span></div>
+          <a class="card-link" href="https://drive.google.com/drive/folders/1MWvUxbP5jPY_XmCbLS6IY6b3I_8Pc0Cu?usp=sharing" target="_blank" rel="noopener">View project →</a>
         </div>
       </article>
 
@@ -823,6 +872,64 @@
       sizeCanvas(); centroids=makeCentroids(k); assign();
       if(reduce){ for(const p of pts){p.x=p.tx;p.y=p.ty;} draw(); }
     },180);});
+  })();
+
+  /* snow — drifts from top-right to lower-left, reacts to scroll */
+  (function(){
+    const c=document.getElementById('stars'); if(!c) return;
+    const ctx=c.getContext('2d');
+    const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let dpr=Math.min(window.devicePixelRatio||1,2);
+    let flakes=[],t=0,lastScroll=window.scrollY||0;
+
+    function build(){
+      const w=window.innerWidth,h=window.innerHeight;
+      c.width=w*dpr; c.height=h*dpr; c.style.width=w+'px'; c.style.height=h+'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      const n=Math.min(170, Math.round(w*h/12000));
+      flakes=[];
+      for(let i=0;i<n;i++){
+        const depth=Math.random()*0.8+0.4;          /* 0.4 (far) .. 1.2 (near) */
+        flakes.push({
+          x:Math.random()*w, y:Math.random()*h,
+          r:depth*2.0+0.5,
+          depth:depth,
+          vy:depth*0.6+0.25,                          /* fall speed */
+          vx:-(depth*0.55+0.2),                       /* drift left */
+          sway:Math.random()*Math.PI*2, ss:0.4+Math.random()*0.8,
+          a:depth*0.45+0.2
+        });
+      }
+    }
+
+    function frame(){
+      const w=window.innerWidth,h=window.innerHeight;
+      ctx.clearRect(0,0,w,h);
+      t+=0.016;
+      const sc=window.scrollY||window.pageYOffset||0;
+      const ds=Math.max(-60,Math.min(60, sc-lastScroll));
+      lastScroll=sc;
+      for(const f of flakes){
+        if(!reduce){
+          f.x += f.vx + Math.sin(t*f.ss+f.sway)*0.3;  /* leftward drift + gentle sway */
+          f.y += f.vy + ds*f.depth*0.35;              /* fall + scroll parallax (by depth) */
+        }
+        /* wrap around edges to keep the field full */
+        if(f.y>h+6){ f.y=-6; f.x=Math.random()*w; }
+        else if(f.y<-10){ f.y=h+6; f.x=Math.random()*w; }
+        if(f.x<-6){ f.x=w+6; f.y=Math.random()*h; }
+        else if(f.x>w+10){ f.x=-6; }
+        ctx.beginPath();
+        ctx.fillStyle='rgba(255,255,255,'+f.a.toFixed(3)+')';
+        ctx.arc(f.x,f.y,f.r,0,Math.PI*2);
+        ctx.fill();
+      }
+      if(!reduce) requestAnimationFrame(frame);
+    }
+
+    build(); frame();
+    let rt;
+    window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(build,200);});
   })();
 </script>
 </body>
