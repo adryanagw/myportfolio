@@ -262,6 +262,30 @@
   .exp-body li{color:var(--muted);font-size:.96rem;margin:0 0 10px;line-height:1.55;}
   .exp-body li::marker{color:var(--teal);}
 
+  /* ---------- TUTORING ---------- */
+  .tutor-intro{color:var(--muted);font-size:1.06rem;max-width:42em;margin:0 0 42px;}
+  .tutor-intro b{color:var(--text);font-weight:600;}
+  .subject-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .subject{
+    border:1px solid var(--line);border-radius:14px;background:var(--surface);
+    padding:28px 26px;transition:transform .25s,border-color .25s,box-shadow .25s;
+  }
+  .subject:hover{transform:translateY(-5px);border-color:var(--line-strong);box-shadow:0 26px 48px -28px rgba(0,0,0,.7);}
+  .subject-icon{
+    width:50px;height:50px;display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line);border-radius:13px;background:var(--surface-2);margin-bottom:18px;
+  }
+  .subject-icon svg{width:30px;height:30px;}
+  .subject h3{font-family:var(--display);font-weight:600;font-size:1.2rem;margin:0 0 8px;letter-spacing:-.01em;color:var(--text);}
+  .subject p{color:var(--muted);font-size:.92rem;margin:0;line-height:1.55;}
+  .tutor-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px;}
+  .info-chip{
+    display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.8rem;
+    color:var(--muted);border:1px solid var(--line);border-radius:9px;padding:9px 15px;background:var(--surface);
+  }
+  .info-chip i{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal);flex:none;}
+  .tutor-foot{display:flex;align-items:center;gap:18px;margin-top:22px;flex-wrap:wrap;}
+
   /* ---------- CONTACT ---------- */
   .contact{text-align:center;padding:108px 0;}
   .contact h2{font-family:var(--display);font-weight:700;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.02em;margin:18px auto 0;max-width:14em;}
@@ -283,6 +307,7 @@
     .figure.band{height:280px;margin-top:14px;}
     .about-grid{grid-template-columns:1fr;gap:40px;}
     .proj-grid{grid-template-columns:1fr;}
+    .subject-grid{grid-template-columns:1fr;}
     .nav-links{display:none;}
   }
   @media(max-width:480px){
@@ -315,6 +340,7 @@
       <a href="#about">/ about</a>
       <a href="#experience">/ experience</a>
       <a href="#work">/ work</a>
+      <a href="#tutoring">/ tutoring</a>
       <a href="#contact">/ contact</a>
     </div>
     <a href="#contact" class="nav-cta">Get in touch</a>
@@ -722,9 +748,83 @@
   </div>
 </section>
 
+<section id="tutoring">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">04 — Tutoring</span>
+        <h2>I also teach</h2>
+      </div>
+      <span class="section-index">high-school · 1-on-1</span>
+    </div>
+
+    <p class="tutor-intro">
+      Alongside my data work, I offer <b>online 1-on-1 tutoring via Zoom</b> under
+      <b>Dalton Lab</b> — helping high-school students build real understanding rather than
+      just memorize formulas, across three subjects.
+    </p>
+
+    <div class="subject-grid">
+      <div class="subject reveal">
+        <div class="subject-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="var(--teal)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 39 V9"/>
+            <path d="M9 39 H39"/>
+            <path d="M11 36 Q24 4 39 16" stroke="var(--amber)"/>
+          </svg>
+        </div>
+        <h3>Mathematics</h3>
+        <p>Algebra, functions, calculus, geometry, and trigonometry — from fundamentals through exam prep.</p>
+      </div>
+
+      <div class="subject reveal">
+        <div class="subject-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="var(--teal)" stroke-width="2.2">
+            <circle cx="24" cy="24" r="3.4" fill="var(--teal)" stroke="none"/>
+            <ellipse cx="24" cy="24" rx="19" ry="7.5"/>
+            <ellipse cx="24" cy="24" rx="19" ry="7.5" transform="rotate(60 24 24)"/>
+            <ellipse cx="24" cy="24" rx="19" ry="7.5" transform="rotate(120 24 24)"/>
+          </svg>
+        </div>
+        <h3>Physics</h3>
+        <p>Mechanics, electricity &amp; magnetism, waves, and thermodynamics, taught with an emphasis on intuition.</p>
+      </div>
+
+      <div class="subject reveal">
+        <div class="subject-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="var(--teal)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 8 H29"/>
+            <path d="M22 8 V19 L12 37 Q11 41 15 41 H33 Q37 41 36 37 L26 19 V8"/>
+            <path d="M16 31 H32" stroke="var(--amber)"/>
+            <circle cx="21" cy="35" r="1.5" fill="var(--amber)" stroke="none"/>
+            <circle cx="27" cy="37" r="1.3" fill="var(--amber)" stroke="none"/>
+          </svg>
+        </div>
+        <h3>Chemistry</h3>
+        <p>Stoichiometry, chemical reactions, atomic structure, and the foundations of organic chemistry.</p>
+      </div>
+    </div>
+
+    <div class="tutor-meta">
+      <span class="info-chip"><i></i>Online via Zoom</span>
+      <span class="info-chip"><i></i>Under Dalton Lab</span>
+      <span class="info-chip"><i></i>Questions &amp; exam help — open until 23.00 daily</span>
+    </div>
+    <div class="tutor-foot">
+      <a class="btn btn-primary" href="https://wa.me/6282136673896?text=Hi%20Adryan%2C%20I%27d%20like%20to%20ask%20about%20your%20tutoring" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:18px;height:18px;">
+          <path d="M12 2a10 10 0 0 0-8.63 15.04L2 22l5.13-1.34A10 10 0 1 0 12 2z" opacity=".22"/>
+          <path d="M8.5 7c.3 0 .57.18.69.46l.66 1.57c.1.25.05.54-.15.74l-.6.6c.5 1.02 1.31 1.83 2.33 2.33l.6-.6c.2-.2.49-.25.74-.15l1.57.66c.28.12.46.39.46.69 0 1.27-1.06 2.07-2.27 1.88-2.99-.46-5.34-2.81-5.8-5.8C6.43 8.06 7.23 7 8.5 7z"/>
+        </svg>
+        Chat on WhatsApp →
+      </a>
+    </div>
+  </div>
+</section>
+
 <section id="contact" class="contact">
   <div class="wrap">
-    <span class="eyebrow" style="justify-content:center;display:flex;">04 — Get in touch</span>
+    <span class="eyebrow" style="justify-content:center;display:flex;">05 — Get in touch</span>
     <h2>Let's talk about data &amp; what it can do for your team.</h2>
     <p>Open to data analyst and data science roles. The fastest way to reach me is email — project files for everything above are linked in the cards.</p>
     <div class="contact-links">
