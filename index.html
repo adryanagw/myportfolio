@@ -87,7 +87,9 @@
   .mono-mark .dot{width:9px;height:9px;border-radius:50%;background:var(--teal);box-shadow:0 0 12px var(--teal);}
   .nav-links{display:flex;gap:30px;align-items:center;}
   .nav-links a{font-family:var(--mono);font-size:.82rem;color:var(--muted);transition:color .2s;letter-spacing:.02em;}
+  .nav-links a span{text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:4px;text-decoration-thickness:1.5px;transition:text-decoration-color .2s;}
   .nav-links a:hover{color:var(--text);}
+  .nav-links a:hover span{text-decoration-color:var(--teal);}
   .nav-cta{
     font-family:var(--mono);font-size:.82rem;
     border:1px solid var(--line-strong);
@@ -337,11 +339,11 @@
   <div class="nav-inner">
     <a href="#top" class="mono-mark"><span class="dot"></span>Adryan&nbsp;Witera</a>
     <div class="nav-links">
-      <a href="#about">/ about</a>
-      <a href="#experience">/ experience</a>
-      <a href="#work">/ work</a>
-      <a href="#tutoring">/ tutoring</a>
-      <a href="#contact">/ contact</a>
+      <a href="#about">/ <span>About</span></a>
+      <a href="#experience">/ <span>Experience</span></a>
+      <a href="#work">/ <span>Projects</span></a>
+      <a href="#tutoring">/ <span>Tutoring</span></a>
+      <a href="#contact">/ <span>Contact</span></a>
     </div>
     <a href="#contact" class="nav-cta">Get in touch</a>
   </div>
